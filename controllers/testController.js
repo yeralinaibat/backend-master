@@ -27,9 +27,7 @@ class testController {
 
       console.log(random);
 
-      const t = await Test.find({ category, languages })
-        .skip(random)
-        .limit(amount);
+      const t = await Test.find({ category, languages }).limit(amount);
 
       return res.json(t);
     } catch (error) {
