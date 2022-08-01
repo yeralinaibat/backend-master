@@ -4,34 +4,22 @@ const uuid = require("uuid");
 class testController {
   async getTestByCategory(req, res) {
     try {
-      console.log(req.query.category);
-      //  if (req.query.category === undefined) {
-      //    return res.json(
-      //      {message: 'поле катешорие пустое'}
-      //)
-      //}
-      var category = req.query.category; //запрос с фронта
-      var amount = req.query.amount;
+      var category = req.query.category;
+      var amount = parseInt(req.query.amount);
       var languages = req.query.languages;
-      /* if (amount === undefined){
-                 amount = 1
-             } */
-      const countTest = await Test.find({ category }).count();
+
+      const questions = await Test.find({ category, languages });
 
       function randomIntFromInterval(min, max) {
-        // min and max included
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
-      console.log(countTest);
-      const random = randomIntFromInterval(0, countTest);
 
-      console.log(random);
+      const random = randomIntFromInterval(0, questions.length - amount);
+      const result = questions.slice(random, random + amount);
 
-      const t = await Test.find({ category, languages }).limit(amount);
-
-      return res.json(t);
+      return res.json(result);
     } catch (error) {
-      console.log(error);
+      return res.status(400).send({ message: err });
     }
   }
 
