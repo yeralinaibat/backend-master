@@ -12,8 +12,14 @@ const Test = new Schema({
     required: true,
   },
   question: {
-    type: Array,
-    required: true,
+    name:{
+      type: String,
+      required: true,
+    },
+    photoUrl:{
+      type:String,
+      required: true,
+    }
   },
   correct_answer: {
     type: String,
