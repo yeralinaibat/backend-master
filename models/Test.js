@@ -12,6 +12,7 @@ const Test = new Schema({
     required: true,
   },
   question: {
+    type: Object,
     name: {
       type: String,
       required: true,
@@ -22,6 +23,7 @@ const Test = new Schema({
     },
   },
   correct_answer: {
+    type: Object,
     name: {
       type: String,
       required: true,
