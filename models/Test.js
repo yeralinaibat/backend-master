@@ -12,10 +12,8 @@ const Test = new Schema({
     required: true,
   },
   question: {
-    type: String,
-    downloadURL: {type: String, createDate: Date.now},
+    type: Array,
     required: true,
-
   },
   correct_answer: {
     type: String,
