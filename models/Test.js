@@ -1,3 +1,4 @@
+const { download } = require("express/lib/response");
 const { Schema, model } = require("mongoose");
 
 const Test = new Schema({
@@ -12,7 +13,9 @@ const Test = new Schema({
   },
   question: {
     type: String,
+    downloadURL: {type: String, createDate: Date.now},
     required: true,
+
   },
   correct_answer: {
     type: String,
